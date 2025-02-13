@@ -11,7 +11,7 @@ interface Breadcrumb {
 export default function Breadcrumbs({
   breadcrumbs,
 }: {
-  breadcrumbs: Breadcrumb[];
+  breadcrumbs: Breadcrumb[]; //Esta línea se refiere a un tipo de dato que indica que la función espera recibir un parámetro que es un array o arreglo. 
 }) {
   return (
     <nav aria-label="Breadcrumb" className="mb-6 block">

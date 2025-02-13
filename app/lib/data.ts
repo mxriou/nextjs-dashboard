@@ -30,6 +30,7 @@ export async function fetchRevenue() {
 
 export async function fetchLatestInvoices() {
   try {
+    // Obtiene las 5 facturas más recientes con información del cliente
     const data = await sql<LatestInvoiceRaw>`
       SELECT invoices.amount, customers.name, customers.image_url, customers.email, invoices.id
       FROM invoices
@@ -37,10 +38,21 @@ export async function fetchLatestInvoices() {
       ORDER BY invoices.date DESC
       LIMIT 5`;
 
+    if (!data.rows.length) {
+      return [];
+    }
+
     const latestInvoices = data.rows.map((invoice) => ({
       ...invoice,
-      amount: formatCurrency(invoice.amount),
+      //Asegurarse de que amoun sea un número valido antes de formatearlo
+      amount: formatCurrency(Number(invoice.amount) || 0),
+      //Asegurarse de que todos los campos sean serializables
+      id: String(invoice.id), 
+      name: String(invoice.name || ''),
+      email: String(invoice.email || ''),
+      image_url: String(invoice.image_url || '')
     }));
+    
     return latestInvoices;
   } catch (error) {
     console.error('Database Error:', error);
@@ -157,7 +169,7 @@ export async function fetchInvoiceById(id: string) {
       // Convert amount from cents to dollars
       amount: invoice.amount / 100,
     }));
-
+    console.log(invoice);
     return invoice[0];
   } catch (error) {
     console.error('Database Error:', error);

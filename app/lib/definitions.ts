@@ -15,16 +15,18 @@ export type Customer = {
   email: string;
   image_url: string;
 };
-
-export type Invoice = {
+export interface Invoice {
+  /** ID único generado automáticamente en la base de datos */
   id: string;
+  /** ID del cliente asociado a la factura */
   customer_id: string;
+  /** Monto de la factura */
   amount: number;
+  /** Fecha de la factura */
   date: string;
-  // In TypeScript, this is called a string union type.
-  // It means that the "status" property can only be one of the two strings: 'pending' or 'paid'.
+  /** Estado de la factura: pendiente o pagada */
   status: 'pending' | 'paid';
-};
+}
 
 export type Revenue = {
   month: string;
@@ -86,3 +88,4 @@ export type InvoiceForm = {
   amount: number;
   status: 'pending' | 'paid';
 };
+
