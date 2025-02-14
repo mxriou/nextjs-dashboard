@@ -6,7 +6,12 @@ import { InvoicesTableSkeleton } from '@/app/ui/skeletons';
 import { Suspense } from 'react';
 import { lusitana } from '@/app/ui/fonts';
 import { fetchInvoicesPages } from '@/app/lib/data';
+import { Metadata } from 'next'; 
 
+//Con esto se definira el titlo como metadato para esta página en particular 
+export const metadata: Metadata = {
+    title: 'Invoices'
+};
 //Los componentes de página aceptan una propiedad llamada searchParam, por lo que se puede 
 // pasar los parametros de URL actuales al componente <Table>
 //searchParams: Es una propiedad opcional (?) que es una Promesa 

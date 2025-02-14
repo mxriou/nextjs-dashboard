@@ -9,7 +9,7 @@ import { fetchLatestInvoices, fetchCardData, fetchRevenue } from '@/app/lib/data
 import { Suspense } from 'react'; 
 import { RevenueChartSkeleton, LatestInvoicesSkeleton, CardsSkeleton } from '@/app/ui/skeletons';
 import CardWrapper from '@/app/ui/dashboard/cards';
-
+import { Metadata } from 'next'; 
 /*
 Suspense es un componente de React que permite "suspender" la renderización 
 de un componente hasta que se cumpla una condición. Mientras tanto, se puede 
@@ -17,6 +17,11 @@ mostrar un fallback(un componente de carga o un mensaje) para mejorar la experie
 del usuario. Lo que esta adentro de las etiquetas <Suspense> es el componente que depende 
 de datos asíncronos o tareas que tardan en completarse.
 */
+
+export const metadata: Metadata = {
+  title: 'Login'
+};
+
 export default function Page() {
   return (
     <main>

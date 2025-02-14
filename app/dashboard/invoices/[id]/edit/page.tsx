@@ -2,6 +2,11 @@ import Form from '@/app/ui/invoices/edit-form';
 import Breadcrumbs from '@/app/ui/invoices/breadcrumbs'; 
 import { fetchInvoiceById, fetchCustomers } from '@/app/lib/data'; 
 import { notFound } from 'next/navigation';
+import { Metadata } from 'next'; 
+
+export const metadata: Metadata = {
+    title: 'Create Invoices' 
+}; 
 
 {/* Breadcrumbs es una barra de navegación que ayuda a los usuarios a entender su ubicación actual dentro de la 
     aplicación y a navegar fácilmente hacia atrás en la jerarquía de páginas. 
